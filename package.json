@@ -16,10 +16,9 @@
     "url": "https://github.com/Dashride/mongoose-efficient-pagination"
   },
   "keywords": [
-    "libphonenumber",
-    "twilio",
-    "phone",
-    "lookup"
+    "pagination",
+    "mongoose",
+    "ranged"
   ],
   "author": "Joseph Thibeault <joe@dashride.com>",
   "license": "Apache-2.0",
