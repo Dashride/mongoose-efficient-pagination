@@ -47,7 +47,7 @@ Customer.find({
 ```
 <a name="module_mongooseEfficientPagination..paginator"></a>
 ### mongooseEfficientPagination~paginator(perPage, [nextID]) ⇒
-Attaches the mongoose document hook and parses the phone number that is provided.
+Can be called from the mongoose model prototype providing an easy way to paginate the result set of a query.
 
 **Kind**: inner method of <code>[mongooseEfficientPagination](#module_mongooseEfficientPagination)</code>  
 **Returns**: this  

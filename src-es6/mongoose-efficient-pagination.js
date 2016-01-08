@@ -39,7 +39,7 @@ mongoose.Query.prototype.paginate = paginator;
 mongooseAggregate.prototype.paginate = paginator;
 
 /**
- * Attaches the mongoose document hook and parses the phone number that is provided.
+ * Can be called from the mongoose model prototype providing an easy way to paginate the result set of a query.
  * @param {number} perPage=20 - number of records per page
  * @param {ObjectId} [nextID=(null)] - the id of the document which you will be starting after
  * @return this

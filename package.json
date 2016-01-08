@@ -1,6 +1,6 @@
 {
   "name": "mongoose-efficient-pagination",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A configurable mongoose pagination plugin that uses objectIds rather than skip",
   "main": "index.js",
   "scripts": {
@@ -27,18 +27,18 @@
   },
   "homepage": "https://github.com/Dashride/mongoose-efficient-pagination",
   "devDependencies": {
-    "babel-preset-es2015": "^6.3.13",
+    "babel": "^5.8.23",
     "chai": "^3.2.0",
     "coveralls": "^2.11.4",
     "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
+    "gulp-babel": "^5.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-istanbul": "^0.10.0",
     "gulp-jsdoc-to-markdown": "^1.1.1",
-    "gulp-jshint": "^2.0.0",
+    "gulp-jshint": "^1.11.2",
     "gulp-mocha": "^2.1.3",
     "gulp-util": "^3.0.6",
-    "isparta": "^4.0.0",
+    "isparta": "^3.1.0",
     "jshint-stylish": "^2.0.1",
     "mocha": "^2.2.5",
     "mongoose": "^4.2.2"
