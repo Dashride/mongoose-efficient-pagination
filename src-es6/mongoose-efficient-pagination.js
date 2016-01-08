@@ -29,9 +29,8 @@ Customer.find({
 })
 .sort({
     createdAt: sortOrder, // this is up to you, sort by a field. I chose createdAt for this example.
-    _id: sortOrder
 })
-.paginate(perPage, sortOrder, startAfter)
+.paginate(perPage, startAfter)
 .exec();
 ```
  */
@@ -42,11 +41,15 @@ mongooseAggregate.prototype.paginate = paginator;
 /**
  * Attaches the mongoose document hook and parses the phone number that is provided.
  * @param {number} perPage=20 - number of records per page
- * @param {number} sortOrder - -1 or 1
  * @param {ObjectId} [nextID=(null)] - the id of the document which you will be starting after
  * @return this
  */
-function paginator(perPage = module.exports.count, sortOrder = 1, nextID = null) {
+function paginator(perPage = module.exports.perPage, nextID = null) {
+    // Detect the sort order. Naive approach, pull the first sorter specified.
+    var sorters = Object.keys(this.options.sort);
+    var sortOrder  = (sorters.length) ? this.options.sort[sorters[0]] : 1;
+    this.options.sort._id = normalizeSortOrder(sortOrder);
+
     // If the next ID is specified, use it in the query.
     if (nextID) {
         var query = { _id: {} };
@@ -57,4 +60,11 @@ function paginator(perPage = module.exports.count, sortOrder = 1, nextID = null)
     this.limit(perPage);
 
     return this;
+}
+
+function normalizeSortOrder(val) {
+    if (!val) return false;
+    if (val.toString().toLowerCase() === 'asc') return 1;
+    if (val.toString().toLowerCase() === 'desc') return -1;
+    return val;
 }

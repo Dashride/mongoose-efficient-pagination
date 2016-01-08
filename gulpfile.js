@@ -1,7 +1,5 @@
 'use strict';
 
-require('babel/register');
-
 var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -31,7 +29,9 @@ gulp.task('watch', ['test'], function(done) {
 
 gulp.task('6to5', function() {
     return gulp.src(paths.es6.js)
-        .pipe(babel())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(gulp.dest('lib'));
 });
 

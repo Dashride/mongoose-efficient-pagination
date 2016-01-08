@@ -41,13 +41,12 @@ Customer.find({
 })
 .sort({
     createdAt: sortOrder, // this is up to you, sort by a field. I chose createdAt for this example.
-    _id: sortOrder
 })
-.paginate(perPage, sortOrder, startAfter)
+.paginate(perPage, startAfter)
 .exec();
 ```
 <a name="module_mongooseEfficientPagination..paginator"></a>
-### mongooseEfficientPagination~paginator(perPage, sortOrder, [nextID]) ⇒
+### mongooseEfficientPagination~paginator(perPage, [nextID]) ⇒
 Attaches the mongoose document hook and parses the phone number that is provided.
 
 **Kind**: inner method of <code>[mongooseEfficientPagination](#module_mongooseEfficientPagination)</code>  
@@ -56,6 +55,5 @@ Attaches the mongoose document hook and parses the phone number that is provided
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | perPage | <code>number</code> | <code>20</code> | number of records per page |
-| sortOrder | <code>number</code> | <code>1</code> | -1 or 1 |
 | [nextID] | <code>ObjectId</code> | <code>(null)</code> | the id of the document which you will be starting after |
 
