@@ -24,13 +24,24 @@ var sortOrder = -1;
 var perPage = 10;
 var startAfter = '52c1190207d5dbccda00000f'; // this value should be passed from your previous result set.
 
+// Page 1
 Customer.find({
     status: 'active'
 })
 .sort({
     createdAt: sortOrder, // this is up to you, sort by a field. I chose createdAt for this example.
 })
-.paginate(perPage, startAfter)
+.paginate(perPage, null)
+.exec();
+
+// Page 2
+Customer.find({
+    status: 'active'
+})
+.sort({
+    createdAt: sortOrder, // this is up to you, sort by a field. I chose createdAt for this example.
+})
+.paginate(perPage, startAfter) // startAfter is the objectId of the last document in the page 1 data set.
 .exec();
 ```
  */
