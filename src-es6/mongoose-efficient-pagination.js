@@ -44,15 +44,31 @@ mongooseAggregate.prototype.paginate = paginator;
  * @param {ObjectId} [nextID=(null)] - the id of the document which you will be starting after
  * @return this
  */
-function paginator(perPage = module.exports.perPage, nextID = null) {
+function paginator() {
+    let perPage = module.exports.perPage;
+    let nextID = null;
+    let sortOrder = 1;
+
+    if (typeof arguments[0] === 'number') {
+        perPage = arguments[0];
+    }
+
+    if (arguments.length === 1 && typeof arguments[0] !== 'number') {
+        nextID = arguments[0];
+    } else if (arguments[1]) {
+        nextID = arguments[1];
+    }
+
     // Detect the sort order. Naive approach, pull the first sorter specified.
-    var sorters = Object.keys(this.options.sort);
-    var sortOrder  = (sorters.length) ? this.options.sort[sorters[0]] : 1;
-    this.options.sort._id = normalizeSortOrder(sortOrder);
+    if (this.options.sort) {
+        let sorters = Object.keys(this.options.sort);
+        sortOrder = this.options.sort[sorters[0]];
+        this.options.sort._id = sortOrder;
+    }
 
     // If the next ID is specified, use it in the query.
     if (nextID) {
-        var query = { _id: {} };
+        let query = { _id: {} };
         query._id[sortOrder === 1 ? '$gt' : '$lt'] = nextID.toString();
         this.where(query);
     }
@@ -60,11 +76,4 @@ function paginator(perPage = module.exports.perPage, nextID = null) {
     this.limit(perPage);
 
     return this;
-}
-
-function normalizeSortOrder(val) {
-    if (!val) return false;
-    if (val.toString().toLowerCase() === 'asc') return 1;
-    if (val.toString().toLowerCase() === 'desc') return -1;
-    return val;
 }
