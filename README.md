@@ -1,5 +1,7 @@
 mongoose-efficient-pagination
 ====================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Dashride/mongoose-efficient-pagination.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/Dashride/mongoose-efficient-pagination.svg?branch=master)](https://travis-ci.org/Dashride/mongoose-efficient-pagination)
 [![Coverage Status](https://coveralls.io/repos/Dashride/mongoose-efficient-pagination/badge.svg?branch=master&service=github)](https://coveralls.io/github/Dashride/mongoose-efficient-pagination?branch=master)
 [![Dependency Status](https://david-dm.org/Dashride/mongoose-efficient-pagination.svg)](https://david-dm.org/Dashride/mongoose-efficient-pagination)
